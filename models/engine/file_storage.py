@@ -79,3 +79,12 @@ class FileStorage:
     def close(self):
         """call reload() method for deserializing the JSON file to objects"""
         self.reload()
+
+    def new(self, obj):
+        """Add the object to the current database session"""
+        if obj:
+            if not obj.id:
+                obj.id = str(uuid.uuid4())
+            obj.save()
+            self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
+            self.save()
