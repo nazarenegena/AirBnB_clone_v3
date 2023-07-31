@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
 # airbnb api
+
+
 import os
 from models import storage
 from flask import Flask

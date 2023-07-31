@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 
+#api status and count
+""" returns json statuses for app_views routes  """
+
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage
 
 @app_views.route("/status", methods=["GET"], strict_slashes=False)
 def status():
+    """ return json status: OK """
     response = {
         "status": "OK"
     }
