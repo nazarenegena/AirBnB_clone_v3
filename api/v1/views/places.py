@@ -6,7 +6,10 @@ Places API views
 from api.v1.views import app_views
 from flask import jsonify, request, abort
 from models import storage, City, Place, User
-
+from models.city import City
+from models.state import State
+from models.place import Place
+from models.amenity import Amenity
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'], strict_slashes=False)
 def get_places(city_id):
