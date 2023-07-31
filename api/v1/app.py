@@ -4,11 +4,16 @@
 import os
 from models import storage
 from flask import Flask
-from api.v1.views import app_views 
+from api.v1.views import app_views
+from flask_cors import CORS
+
 app = Flask(__name__)
 
 # Register the app_views blueprint
 app.register_blueprint(app_views)
+
+#CORS instance allowing for 0.0.0.0
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 # Teardown function to close the storage when the app context tears down
 @app.teardown_appcontext
