@@ -15,6 +15,13 @@ app.register_blueprint(app_views)
 def close_storage(exception=None):
     storage.close()
 
+# Not found url
+@app.errorhandler(404)
+def not_found(error):
+    response = {
+        "error": "Not found"
+    }
+    return jsonify(response), 404
 
 if __name__ == '__main__':
     # Set the host and port from environment variables or use default values
